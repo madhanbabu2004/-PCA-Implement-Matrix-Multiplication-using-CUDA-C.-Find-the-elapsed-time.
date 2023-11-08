@@ -19,11 +19,12 @@ Intoduce a Main function, in the main method declare the required variables and 
 Step 5 :
 Save the program and execute it .
 # PROGRAM:
-Developed By: MURALI S
-Register no.: 212222230088
+Developed By: MADHAN BABU P
+Register no.: 212222230075
+
+
 #include <stdio.h>
 #include <sys/time.h>
-
 #define SIZE 4
 #define BLOCK_SIZE 2
 
@@ -48,7 +49,6 @@ int main()
     int *dev_a, *dev_b, *dev_c;
     int size = SIZE * SIZE * sizeof(int);
 
-    // Initialize matrices 'a' and 'b'
     for (int i = 0; i < SIZE; ++i)
     {
         for (int j = 0; j < SIZE; ++j)
@@ -58,34 +58,23 @@ int main()
         }
     }
 
-    // Allocate memory on the device
     cudaMalloc((void**)&dev_a, size);
     cudaMalloc((void**)&dev_b, size);
     cudaMalloc((void**)&dev_c, size);
 
-    // Copy input matrices from host to device memory
     cudaMemcpy(dev_a, a, size, cudaMemcpyHostToDevice);
     cudaMemcpy(dev_b, b, size, cudaMemcpyHostToDevice);
 
-    // Set grid and block sizes
     dim3 dimGrid(SIZE / BLOCK_SIZE, SIZE / BLOCK_SIZE);
     dim3 dimBlock(BLOCK_SIZE, BLOCK_SIZE);
-
-    // Start timer
     struct timeval start, end;
     gettimeofday(&start, NULL);
-
-    // Launch kernel
     matrixMultiply<<<dimGrid, dimBlock>>>(dev_a, dev_b, dev_c, SIZE);
-
-    // Copy result matrix from device to host memory
     cudaMemcpy(c, dev_c, size, cudaMemcpyDeviceToHost);
 
-    // Stop timer
     gettimeofday(&end, NULL);
     double elapsed_time = (end.tv_sec - start.tv_sec) + (end.tv_usec - start.tv_usec) / 1000000.0;
 
-    // Print the result matrix
     printf("Result Matrix:\n");
     for (int i = 0; i < SIZE; ++i)
     {
@@ -95,11 +84,7 @@ int main()
         }
         printf("\n");
     }
-
-    // Print the elapsed time
     printf("Elapsed Time: %.6f seconds\n", elapsed_time);
-
-    // Free device memory
     cudaFree(dev_a);
     cudaFree(dev_b);
     cudaFree(dev_c);
