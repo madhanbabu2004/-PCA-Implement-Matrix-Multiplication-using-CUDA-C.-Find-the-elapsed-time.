@@ -1,10 +1,10 @@
 # PCA-Implement-Matrix-Multiplication-using-CUDA-C.-Find-the-elapsed-time.
  Implement Matrix Multiplication using GPU.
 
- ## Aim:
+## Aim:
 To implement Matrix Multiplication using GPU.
 
-# #Procedure:
+## Procedure:
 Step 1 :
 Include the required files and library.
 
