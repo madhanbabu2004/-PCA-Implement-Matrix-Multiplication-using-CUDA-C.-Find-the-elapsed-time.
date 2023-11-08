@@ -129,6 +129,9 @@ Elapsed Time: 0.000037 seconds
 
 
 
-## Result:
+
 ![PCA 1](https://github.com/MURALI22008445/-PCA-Implement-Matrix-Multiplication-using-CUDA-C.-Find-the-elapsed-time./assets/119643767/becb0217-e800-4a79-a6b8-e7fe08b28889)
+
+## Result:
+Thus PCA Implement Matrix-Multiplication is done by using CUDA-C.
 
